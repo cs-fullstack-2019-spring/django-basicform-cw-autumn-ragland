@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+<!--form tag-->
+<form action="{% url 'displayName' %}" method="post">
+    {% csrf_token %}
+    <!--loop through the model array-->
+    {% for eachAccount in allAccounts %}
+        <!--display object attr and  run addFive function if the link is clicked for a specific account-->
+        <p>{{eachAccount.name}} {{eachAccount.checking}} {{eachAccount.savings}} {{eachAccount.dateTimeOpen}} <a href="{% url 'addFive' eachAccount.id %}">index</a> </p>
+    {% endfor %}
+    <!--text input for personalized h1 tag-->
+    <input type="text" name="personName">
+    <!--submit the form-->
+    <button>Submit</button>
+
+</form>
+</body>
+</html>
